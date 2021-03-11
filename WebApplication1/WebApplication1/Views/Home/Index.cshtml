@@ -1,0 +1,29 @@
+﻿@using WebApplication1.Models.Computers
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h2><a asp-controller="Home" asp-action="Create">CREATE A NEW COMPUTER INFO REPORT</a></h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>computer.Id</th>
+            <th>computer.Ip</th>
+            <th>computer.MacAddress</th>
+            <th>computer.ComputerName</th>
+            <th>computer.Edit</th>
+            <th>computer.Delete</th>
+        </tr>
+        @foreach (Computer computer in ViewBag.Computers)
+        {
+            <tr>
+                <td>@computer.Id</td>
+                <td>@computer.Ip</td>
+                <td>@computer.MacAddress</td>
+                <td>@computer.ComputerName</td>
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@computer.Id">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@computer.Id">Delete</a></td>
+            </tr>
+        }
+    </table>
+</div>
